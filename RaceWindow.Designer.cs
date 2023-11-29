@@ -101,6 +101,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "RaceWindow";
             Text = "Race";
+            FormClosing += RaceWindow_FormClosing;
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ResumeLayout(false);

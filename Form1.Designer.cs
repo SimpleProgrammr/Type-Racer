@@ -37,7 +37,7 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            label6 = new Label();
+            WordsSpeed = new Label();
             WordsSpeedOptions = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)wordsNumber).BeginInit();
             SuspendLayout();
@@ -65,9 +65,12 @@
             // wordsNumber
             // 
             wordsNumber.Location = new Point(12, 79);
+            wordsNumber.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+            wordsNumber.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
             wordsNumber.Name = "wordsNumber";
             wordsNumber.Size = new Size(120, 23);
             wordsNumber.TabIndex = 2;
+            wordsNumber.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
             // languageSetting
             // 
@@ -109,38 +112,39 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10F);
-            label5.Location = new Point(376, 28);
+            label5.Location = new Point(369, 27);
             label5.Name = "label5";
             label5.Size = new Size(28, 19);
             label5.TabIndex = 7;
             label5.Text = "0%";
             // 
-            // label6
+            // WordsSpeed
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 10F);
-            label6.Location = new Point(376, 59);
-            label6.Name = "label6";
-            label6.Size = new Size(17, 19);
-            label6.TabIndex = 9;
-            label6.Text = "0";
+            WordsSpeed.AutoSize = true;
+            WordsSpeed.Font = new Font("Segoe UI", 10F);
+            WordsSpeed.Location = new Point(376, 57);
+            WordsSpeed.Name = "WordsSpeed";
+            WordsSpeed.Size = new Size(17, 19);
+            WordsSpeed.TabIndex = 9;
+            WordsSpeed.Text = "0";
             // 
             // WordsSpeedOptions
             // 
-            WordsSpeedOptions.AutoCompleteCustomSource.AddRange(new string[] { "CMP", "CPS" });
+            WordsSpeedOptions.AutoCompleteCustomSource.AddRange(new string[] { "WPM", "WPS" });
             WordsSpeedOptions.FormattingEnabled = true;
             WordsSpeedOptions.Location = new Point(300, 55);
             WordsSpeedOptions.Name = "WordsSpeedOptions";
             WordsSpeedOptions.Size = new Size(70, 23);
             WordsSpeedOptions.TabIndex = 10;
+            WordsSpeedOptions.SelectedIndexChanged += WordsSpeedOptions_SelectedIndexChanged;
             // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(414, 113);
+            ClientSize = new Size(422, 113);
             Controls.Add(WordsSpeedOptions);
-            Controls.Add(label6);
+            Controls.Add(WordsSpeed);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -153,6 +157,7 @@
             MaximizeBox = false;
             Name = "MainWindow";
             Text = "Type Racer";
+            Load += MainWindow_Load;
             ((System.ComponentModel.ISupportInitialize)wordsNumber).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -168,7 +173,7 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private Label label6;
+        private Label WordsSpeed;
         private ComboBox WordsSpeedOptions;
     }
 }
