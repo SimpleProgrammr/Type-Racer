@@ -92,9 +92,10 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(344, 9);
+            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            label3.Location = new Point(303, 4);
             label3.Name = "label3";
-            label3.Size = new Size(53, 15);
+            label3.Size = new Size(72, 20);
             label3.TabIndex = 5;
             label3.Text = "Statistics";
             // 
@@ -102,7 +103,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F);
-            label4.Location = new Point(300, 27);
+            label4.Location = new Point(300, 28);
             label4.Name = "label4";
             label4.Size = new Size(70, 19);
             label4.TabIndex = 6;
@@ -132,6 +133,7 @@
             // 
             WordsSpeedOptions.AutoCompleteCustomSource.AddRange(new string[] { "WPM", "WPS" });
             WordsSpeedOptions.FormattingEnabled = true;
+            WordsSpeedOptions.Items.AddRange(new object[] { "WPM", "WPS", "CPM", "CPS" });
             WordsSpeedOptions.Location = new Point(300, 55);
             WordsSpeedOptions.Name = "WordsSpeedOptions";
             WordsSpeedOptions.Size = new Size(70, 23);
