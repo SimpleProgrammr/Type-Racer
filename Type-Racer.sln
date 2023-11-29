@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Type-Racer", "Type-Racer.csproj", "{763C2095-323C-44C6-B0CD-EE22C84C44B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{763C2095-323C-44C6-B0CD-EE22C84C44B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{763C2095-323C-44C6-B0CD-EE22C84C44B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{763C2095-323C-44C6-B0CD-EE22C84C44B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{763C2095-323C-44C6-B0CD-EE22C84C44B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {15B1436F-443B-4162-8558-66182AA17B1A}
+	EndGlobalSection
+EndGlobal
