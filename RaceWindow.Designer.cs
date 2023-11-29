@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RaceWindow));
             textBox1 = new TextBox();
             statusStrip1 = new StatusStrip();
             exitButton = new ToolStripStatusLabel();
@@ -97,8 +98,8 @@
             Controls.Add(textBox2);
             Controls.Add(statusStrip1);
             Controls.Add(textBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "RaceWindow";
-            ShowIcon = false;
             Text = "Race";
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();

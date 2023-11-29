@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             startButton = new Button();
             label1 = new Label();
             wordsNumber = new NumericUpDown();
@@ -148,9 +149,9 @@
             Controls.Add(wordsNumber);
             Controls.Add(label1);
             Controls.Add(startButton);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "MainWindow";
-            ShowIcon = false;
             Text = "Type Racer";
             ((System.ComponentModel.ISupportInitialize)wordsNumber).EndInit();
             ResumeLayout(false);

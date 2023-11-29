@@ -7,7 +7,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>4212889_education_graduation_key_keyboard_icon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="4212889_education_graduation_key_keyboard_icon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="DictionaryLib_Calvin_Hsia" Version="1.0.7" />
