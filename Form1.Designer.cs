@@ -36,7 +36,7 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            label5 = new Label();
+            errorRateLabel = new Label();
             WordsSpeed = new Label();
             WordsSpeedOptions = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)wordsNumber).BeginInit();
@@ -109,15 +109,15 @@
             label4.TabIndex = 6;
             label4.Text = "Error rate:";
             // 
-            // label5
+            // errorRateLabel
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 10F);
-            label5.Location = new Point(369, 27);
-            label5.Name = "label5";
-            label5.Size = new Size(28, 19);
-            label5.TabIndex = 7;
-            label5.Text = "0%";
+            errorRateLabel.AutoSize = true;
+            errorRateLabel.Font = new Font("Segoe UI", 10F);
+            errorRateLabel.Location = new Point(369, 27);
+            errorRateLabel.Name = "errorRateLabel";
+            errorRateLabel.Size = new Size(28, 19);
+            errorRateLabel.TabIndex = 7;
+            errorRateLabel.Text = "0%";
             // 
             // WordsSpeed
             // 
@@ -147,7 +147,7 @@
             ClientSize = new Size(422, 113);
             Controls.Add(WordsSpeedOptions);
             Controls.Add(WordsSpeed);
-            Controls.Add(label5);
+            Controls.Add(errorRateLabel);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -174,7 +174,7 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private Label label5;
+        private Label errorRateLabel;
         private Label WordsSpeed;
         private ComboBox WordsSpeedOptions;
     }
