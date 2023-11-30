@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 
 namespace Type_Racer
 {
     public partial class RaceWindow : Form
     {
         private static decimal clicks = 0, words = 0, errors = 0;
-        private static int wordsDisplayed = 5, wordLen =0;
+        private static int wordsDisplayed = 5, wordLen = 0;
         public static System.Diagnostics.Stopwatch timer = new System.Diagnostics.Stopwatch();
         private List<string> dict = new List<string>();
         private string[] wrds = new string[wordsDisplayed];
@@ -49,55 +40,18 @@ namespace Type_Racer
 
             if (!timer.IsRunning)
                 timer.Start();
+            if(KeyDown)
             clicks++;
-            userInputTextBox.Text = userInputTextBox.Text.ToLower();
+            string Input = userInputTextBox.Text;
 
-            statusLabel.Text = "Status: OK";
-            statusLabel.BackColor = Color.Lime;
-
-            
-
-            if (userInputTextBox.Text.Length <= 0)
+            if (Input.Trim().Length > wrds[0].Length)
+            {
+                statusLabel.Text = "Status: ERROR";
+                statusLabel.BackColor = Color.Red;
                 return;
-            if (wordLen < userInputTextBox.Text.Length) {
-
-                wordLen--;
             }
-            if (userInputTextBox.Text.Last() == ' ')
+            if (Input != wrds[0].Remove(Input.TrimEnd().Length))
             {
-                if (userInputTextBox.Text.Trim() == wrds[0])
-                {
-                    words++;
-                    NewWords();
-                    userInputTextBox.Text = "";
-                    wordLen = 0;
-                }
-                //return;
-            }
-
-            bool isError = false;
-
-            
-            for (int i = 0; i < userInputTextBox.Text.Length; i++)
-            {
-                if(i > wrds[0].Length)
-                {
-                    isError = true;
-                    break;
-                }
-                if (userInputTextBox.Text[i] != wrds[0][i])
-                {
-                    
-                    isError = true;
-                    break;
-                }
-            }
-            if (isError)
-            {
-                if(wordLen >= wrds[0].Length)
-                    wordLen = wrds[0].Length-1;
-                if (wordLen >= userInputTextBox.Text.Length && userInputTextBox.Text.Last() != wrds[0][wordLen])
-                    errors++;
                 statusLabel.Text = "Status: ERROR";
                 statusLabel.BackColor = Color.Red;
             }
@@ -106,8 +60,71 @@ namespace Type_Racer
                 statusLabel.Text = "Status: OK";
                 statusLabel.BackColor = Color.Lime;
             }
-            wordLen++;
-            
+
+            if(Input.Last() == ' ' && statusLabel.Text == "Status: OK")
+            {
+                words++;
+                userInputTextBox.Text = "";
+            }
+
+            //userInputTextBox.Text = userInputTextBox.Text.ToLower();
+
+            //statusLabel.Text = "Status: OK";
+            //statusLabel.BackColor = Color.Lime;
+
+
+
+            //if (userInputTextBox.Text.Length <= 0)
+            //    return;
+            //if (wordLen < userInputTextBox.Text.Length) {
+
+            //    wordLen--;
+            //}
+            //if (userInputTextBox.Text.Last() == ' ')
+            //{
+            //    if (userInputTextBox.Text.Trim() == wrds[0])
+            //    {
+            //        words++;
+            //        NewWords();
+            //        userInputTextBox.Text = "";
+            //        wordLen = 0;
+            //    }
+            //    //return;
+            //}
+
+            //bool isError = false;
+
+
+            //for (int i = 0; i < userInputTextBox.Text.Length; i++)
+            //{
+            //    if(i > wrds[0].Length)
+            //    {
+            //        isError = true;
+            //        break;
+            //    }
+            //    if (userInputTextBox.Text[i] != wrds[0][i])
+            //    {
+
+            //        isError = true;
+            //        break;
+            //    }
+            //}
+            //if (isError)
+            //{
+            //    if(wordLen >= wrds[0].Length)
+            //        wordLen = wrds[0].Length-1;
+            //    if (wordLen >= userInputTextBox.Text.Length && userInputTextBox.Text.Last() != wrds[0][wordLen])
+            //        errors++;
+            //    statusLabel.Text = "Status: ERROR";
+            //    statusLabel.BackColor = Color.Red;
+            //}
+            //else
+            //{
+            //    statusLabel.Text = "Status: OK";
+            //    statusLabel.BackColor = Color.Lime;
+            //}
+            //wordLen++;
+
         }
 
         private void NewWords()
@@ -123,7 +140,7 @@ namespace Type_Racer
         private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
-            
+
         }
 
         private void resetButton_Click(object sender, EventArgs e)
