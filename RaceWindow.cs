@@ -8,6 +8,7 @@ namespace Type_Racer
         private static int wordsDisplayed = 5, wordLen = 0;
         public static System.Diagnostics.Stopwatch timer = new System.Diagnostics.Stopwatch();
         private List<string> dict = new List<string>();
+        private bool enterClicked = false;
         private string[] wrds = new string[wordsDisplayed];
 
         public RaceWindow(ref List<string> dictionary)
@@ -24,15 +25,18 @@ namespace Type_Racer
 
         private void RaceWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            timer.Stop();
             var time = timer.ElapsedMilliseconds;
             if (time <= 0)
                 return;
+            clicks /= 2;
+            clicks -= 1;
             MainWindow.wps = words / (time / 1000);
             MainWindow.wpm = words / (time / 1000) * 60;
             MainWindow.cps = clicks / (time / 1000);
             MainWindow.cpm = clicks / (time / 1000) * 60;
             MainWindow.errorRate = errors / clicks * 100;
+            MainWindow.time = time / 1000;
         }
 
         private void UserInput_TextChanged(object sender, EventArgs e)
@@ -40,18 +44,20 @@ namespace Type_Racer
 
             if (!timer.IsRunning)
                 timer.Start();
-            if(KeyDown)
+
             clicks++;
-            string Input = userInputTextBox.Text;
+            string Input = userInputTextBox.Text.ToLower();
 
             if (Input.Trim().Length > wrds[0].Length)
             {
+                errors++;
                 statusLabel.Text = "Status: ERROR";
                 statusLabel.BackColor = Color.Red;
                 return;
             }
-            if (Input != wrds[0].Remove(Input.TrimEnd().Length))
+            if (Input.Trim() != wrds[0].Remove(Input.Trim().Length))
             {
+                errors++;
                 statusLabel.Text = "Status: ERROR";
                 statusLabel.BackColor = Color.Red;
             }
@@ -60,12 +66,16 @@ namespace Type_Racer
                 statusLabel.Text = "Status: OK";
                 statusLabel.BackColor = Color.Lime;
             }
-
-            if(Input.Last() == ' ' && statusLabel.Text == "Status: OK")
-            {
-                words++;
-                userInputTextBox.Text = "";
-            }
+            if (Input.Length > 0)
+                if ((Input.Last() == ' ' || enterClicked) && Input.Trim() == wrds[0])
+                {
+                    words++;
+                    userInputTextBox.Text = "";
+                    enterClicked = false;
+                    NewWords();
+                }
+            if (words == MainWindow.wordsNum)
+                this.Close();
 
             //userInputTextBox.Text = userInputTextBox.Text.ToLower();
 
@@ -132,6 +142,11 @@ namespace Type_Racer
             trackTextBox.Text = string.Empty;
             for (int i = 0; i < wordsDisplayed; i++)
             {
+                if (words + i >= MainWindow.wordsNum)
+                {
+                    wrds[i] = "";
+                    continue;
+                }
                 wrds[i] = dict[i + Convert.ToInt32(words)];
                 trackTextBox.Text += wrds[i] + "  ";
             }
@@ -146,12 +161,21 @@ namespace Type_Racer
         private void resetButton_Click(object sender, EventArgs e)
         {
             timer.Stop();
+            timer.Reset();
             clicks = 0;
             words = 0;
             errors = 0;
             this.dict = dict.OrderBy(a => Guid.NewGuid()).ToList();
             NewWords();
             userInputTextBox.Text = string.Empty;
+        }
+
+        private void userInputTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            enterClicked = e.KeyCode == Keys.Enter ? true : false;
+            if (e.KeyCode == Keys.Space && clicks > 0)
+                clicks--;
+            UserInput_TextChanged(sender, e);
         }
     }
 }

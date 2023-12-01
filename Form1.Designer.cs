@@ -39,15 +39,17 @@
             errorRateLabel = new Label();
             WordsSpeed = new Label();
             WordsSpeedOptions = new ComboBox();
+            lastTimeLabel = new Label();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)wordsNumber).BeginInit();
             SuspendLayout();
             // 
             // startButton
             // 
             startButton.Font = new Font("Segoe UI", 14F);
-            startButton.Location = new Point(158, 28);
+            startButton.Location = new Point(159, 54);
             startButton.Name = "startButton";
-            startButton.Size = new Size(109, 48);
+            startButton.Size = new Size(129, 48);
             startButton.TabIndex = 0;
             startButton.Text = "Start";
             startButton.UseVisualStyleBackColor = true;
@@ -66,7 +68,7 @@
             // 
             wordsNumber.Location = new Point(12, 79);
             wordsNumber.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
-            wordsNumber.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
+            wordsNumber.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             wordsNumber.Name = "wordsNumber";
             wordsNumber.Size = new Size(120, 23);
             wordsNumber.TabIndex = 2;
@@ -140,11 +142,33 @@
             WordsSpeedOptions.TabIndex = 10;
             WordsSpeedOptions.SelectedIndexChanged += WordsSpeedOptions_SelectedIndexChanged;
             // 
+            // lastTimeLabel
+            // 
+            lastTimeLabel.AutoSize = true;
+            lastTimeLabel.Font = new Font("Segoe UI", 10F);
+            lastTimeLabel.Location = new Point(201, 27);
+            lastTimeLabel.Name = "lastTimeLabel";
+            lastTimeLabel.Size = new Size(27, 19);
+            lastTimeLabel.TabIndex = 11;
+            lastTimeLabel.Text = "0 s";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            label5.Location = new Point(159, 6);
+            label5.Name = "label5";
+            label5.Size = new Size(129, 21);
+            label5.TabIndex = 12;
+            label5.Text = "Last Game Time:";
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(422, 113);
+            ClientSize = new Size(429, 113);
+            Controls.Add(label5);
+            Controls.Add(lastTimeLabel);
             Controls.Add(WordsSpeedOptions);
             Controls.Add(WordsSpeed);
             Controls.Add(errorRateLabel);
@@ -169,7 +193,6 @@
 
         private Button startButton;
         private Label label1;
-        private NumericUpDown wordsNumber;
         private ComboBox languageSetting;
         private Label label2;
         private Label label3;
@@ -177,5 +200,8 @@
         private Label errorRateLabel;
         private Label WordsSpeed;
         private ComboBox WordsSpeedOptions;
+        public NumericUpDown wordsNumber;
+        private Label lastTimeLabel;
+        private Label label5;
     }
 }

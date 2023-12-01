@@ -46,6 +46,7 @@
             userInputTextBox.Size = new Size(595, 31);
             userInputTextBox.TabIndex = 0;
             userInputTextBox.TextChanged += UserInput_TextChanged;
+            userInputTextBox.KeyDown += userInputTextBox_KeyDown;
             // 
             // statusStrip1
             // 
@@ -88,9 +89,9 @@
             statusLabel.Font = new Font("Segoe UI", 10F);
             statusLabel.Location = new Point(12, 54);
             statusLabel.Name = "statusLabel";
-            statusLabel.Size = new Size(96, 19);
+            statusLabel.Size = new Size(126, 19);
             statusLabel.TabIndex = 3;
-            statusLabel.Text = "Status: ERROR";
+            statusLabel.Text = "Status: Start typing";
             // 
             // RaceWindow
             // 
