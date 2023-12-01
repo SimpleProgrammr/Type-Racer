@@ -26,7 +26,7 @@ namespace Type_Racer
         private void RaceWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             timer.Stop();
-            var time = timer.ElapsedMilliseconds;
+            var time = (decimal)timer.ElapsedMilliseconds;
             if (time <= 0)
                 return;
             clicks /= 2;
@@ -176,6 +176,33 @@ namespace Type_Racer
             if (e.KeyCode == Keys.Space && clicks > 0)
                 clicks--;
             UserInput_TextChanged(sender, e);
+        }
+
+        private void statsCouter_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            for(int i =0; i < 10000; i++)
+            {
+                if (statsCouter.CancellationPending)
+                    break;
+
+                statsCouter.ReportProgress(i%2);
+            }
+            return;
+        }
+
+        private void statsCouter_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            errorsLabel.Text = $"Mistakes: {errors}";
+            CompletedWordsLabel.Text = $"Completed words: ";
+            timeLabel.Text = $"Time: {double.Round((double)timer.ElapsedMilliseconds / 1000, 3)} s";
+        }
+
+        private void statsCouter_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if(timer.IsRunning)
+            {
+                statsCouter.RunWorkerAsync();
+            }
         }
     }
 }
