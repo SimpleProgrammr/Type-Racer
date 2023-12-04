@@ -88,8 +88,8 @@
             // 
             stateLabel.Font = new Font("Segoe UI", 10F);
             stateLabel.Name = "stateLabel";
-            stateLabel.Size = new Size(101, 20);
-            stateLabel.Text = "100/100 100%";
+            stateLabel.Size = new Size(53, 20);
+            stateLabel.Text = "0/0 0%";
             // 
             // trackTextBox
             // 

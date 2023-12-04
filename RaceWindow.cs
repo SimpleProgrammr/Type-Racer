@@ -21,6 +21,7 @@ namespace Type_Racer
         private void RaceWindow_Load(object sender, EventArgs e)
         {
             NewWords();
+            stateLabel.Text = "0/" + MainWindow.wordsNum + " 0%";
             userInputTextBox.Focus();
         }
 
