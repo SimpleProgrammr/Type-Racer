@@ -19,6 +19,11 @@ namespace Type_Racer
 
         private void RaceWindow_Load(object sender, EventArgs e)
         {
+            clicks = 0; 
+            words = 0; 
+            errors = 0;
+            wordsDisplayed = 5;
+            wordLen = 0;
             NewWords();
             userInputTextBox.Focus();
         }
@@ -130,7 +135,7 @@ namespace Type_Racer
 
         private void statsCouter_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            for(int i =0; timer.IsRunning ; i++)
+            for (int i = 0; timer.IsRunning; i++)
             {
                 if (statsCouter.CancellationPending)
                     break;

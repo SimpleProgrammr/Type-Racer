@@ -28,6 +28,7 @@ namespace Type_Racer
 
         private void StartButton_Click(object sender, EventArgs e)
         {
+
             wordsNum = wordsNumber.Value;
             var dict = File.ReadAllLines(".\\Dictionaries\\" + languageSetting.Text).ToList();
             RaceWindow rw = new RaceWindow(ref dict);
@@ -54,7 +55,7 @@ namespace Type_Racer
             errorRateLabel.Text = decimal.Round(errorRate, 2).ToString() + " %";
             lastTimeLabel.Text = decimal.Round(time, 2).ToString() + " s";
             this.Show();
-
+            rw.Dispose();
 
         }
 
