@@ -77,5 +77,11 @@ namespace Type_Racer
                     break;
             }
         }
+
+        private void wordsNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                StartButton_Click(sender, e);
+        }
     }
 }

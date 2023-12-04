@@ -73,6 +73,7 @@
             wordsNumber.Size = new Size(120, 23);
             wordsNumber.TabIndex = 2;
             wordsNumber.Value = new decimal(new int[] { 30, 0, 0, 0 });
+            wordsNumber.KeyDown += wordsNumber_KeyDown;
             // 
             // languageSetting
             // 
