@@ -146,6 +146,7 @@ namespace Type_Racer
             errorsLabel.Text = $"Mistakes: {errors}";
             CompletedWordsLabel.Text = $"Completed words: {words}";
             timeLabel.Text = $"Time: {double.Round((double)timer.ElapsedMilliseconds / 1000, 1)} s";
+            stateProgressBar.Value = (int)((words / MainWindow.wordsNum)*100);
         }
 
     }

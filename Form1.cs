@@ -2,8 +2,13 @@ namespace Type_Racer
 {
     public partial class MainWindow : Form
     {
-        public static decimal cps = 0, cpm = 0, wpm = 0, wps = 0, errorRate = 0, wordsNum, time = 0;
-
+        private static decimal cps = 0;
+        private static decimal cpm = 0;
+        private static decimal wpm = 0;
+        private static decimal wps = 0;
+        private static decimal errorRate = 0;
+        private static decimal wordsNum;
+        private static decimal time = 0;
 
         public MainWindow()
         {

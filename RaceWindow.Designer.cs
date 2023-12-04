@@ -33,6 +33,8 @@
             statusStrip1 = new StatusStrip();
             exitButton = new ToolStripStatusLabel();
             resetButton = new ToolStripStatusLabel();
+            stateProgressBar = new ToolStripProgressBar();
+            stateLabel = new ToolStripStatusLabel();
             trackTextBox = new TextBox();
             statusLabel = new Label();
             CompletedWordsLabel = new Label();
@@ -54,7 +56,7 @@
             // 
             // statusStrip1
             // 
-            statusStrip1.Items.AddRange(new ToolStripItem[] { exitButton, resetButton });
+            statusStrip1.Items.AddRange(new ToolStripItem[] { exitButton, resetButton, stateProgressBar, stateLabel });
             statusStrip1.Location = new Point(0, 121);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(619, 25);
@@ -63,9 +65,9 @@
             // 
             // exitButton
             // 
-            exitButton.Font = new Font("Segoe UI", 11F);
+            exitButton.Font = new Font("Segoe UI", 10F);
             exitButton.Name = "exitButton";
-            exitButton.Size = new Size(33, 20);
+            exitButton.Size = new Size(30, 20);
             exitButton.Text = "Exit";
             exitButton.Click += exitButton_Click;
             // 
@@ -76,6 +78,18 @@
             resetButton.Size = new Size(42, 20);
             resetButton.Text = "Reset";
             resetButton.Click += resetButton_Click;
+            // 
+            // stateProgressBar
+            // 
+            stateProgressBar.Name = "stateProgressBar";
+            stateProgressBar.Size = new Size(200, 19);
+            // 
+            // stateLabel
+            // 
+            stateLabel.Font = new Font("Segoe UI", 10F);
+            stateLabel.Name = "stateLabel";
+            stateLabel.Size = new Size(101, 20);
+            stateLabel.Text = "100/100 100%";
             // 
             // trackTextBox
             // 
@@ -172,5 +186,7 @@
         private Label errorsLabel;
         private Label timeLabel;
         private System.ComponentModel.BackgroundWorker statsCouter;
+        private ToolStripProgressBar stateProgressBar;
+        private ToolStripStatusLabel stateLabel;
     }
 }
