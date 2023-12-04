@@ -111,7 +111,7 @@
             // 
             errorsLabel.AutoSize = true;
             errorsLabel.Font = new Font("Segoe UI", 10F);
-            errorsLabel.Location = new Point(345, 54);
+            errorsLabel.Location = new Point(360, 54);
             errorsLabel.Name = "errorsLabel";
             errorsLabel.Size = new Size(82, 19);
             errorsLabel.TabIndex = 5;
@@ -129,9 +129,10 @@
             // 
             // statsCouter
             // 
+            statsCouter.WorkerReportsProgress = true;
+            statsCouter.WorkerSupportsCancellation = true;
             statsCouter.DoWork += statsCouter_DoWork;
             statsCouter.ProgressChanged += statsCouter_ProgressChanged;
-            statsCouter.RunWorkerCompleted += statsCouter_RunWorkerCompleted;
             // 
             // RaceWindow
             // 

@@ -43,21 +43,27 @@ namespace Type_Racer
         {
 
             if (!timer.IsRunning)
+            {
                 timer.Start();
-
+                statsCouter.RunWorkerAsync();
+            }
             clicks++;
             string Input = userInputTextBox.Text.ToLower();
 
             if (Input.Trim().Length > wrds[0].Length)
             {
-                errors++;
+                if (wordLen < Input.Trim().Length)
+                    errors++;
+
                 statusLabel.Text = "Status: ERROR";
                 statusLabel.BackColor = Color.Red;
                 return;
             }
             if (Input.Trim() != wrds[0].Remove(Input.Trim().Length))
             {
-                errors++;
+                if (wordLen < Input.Trim().Length)
+                    errors++;
+
                 statusLabel.Text = "Status: ERROR";
                 statusLabel.BackColor = Color.Red;
             }
@@ -72,68 +78,12 @@ namespace Type_Racer
                     words++;
                     userInputTextBox.Text = "";
                     enterClicked = false;
+                    wordLen = 0;
                     NewWords();
                 }
+            wordLen = Input.Trim().Length;
             if (words == MainWindow.wordsNum)
                 this.Close();
-
-            //userInputTextBox.Text = userInputTextBox.Text.ToLower();
-
-            //statusLabel.Text = "Status: OK";
-            //statusLabel.BackColor = Color.Lime;
-
-
-
-            //if (userInputTextBox.Text.Length <= 0)
-            //    return;
-            //if (wordLen < userInputTextBox.Text.Length) {
-
-            //    wordLen--;
-            //}
-            //if (userInputTextBox.Text.Last() == ' ')
-            //{
-            //    if (userInputTextBox.Text.Trim() == wrds[0])
-            //    {
-            //        words++;
-            //        NewWords();
-            //        userInputTextBox.Text = "";
-            //        wordLen = 0;
-            //    }
-            //    //return;
-            //}
-
-            //bool isError = false;
-
-
-            //for (int i = 0; i < userInputTextBox.Text.Length; i++)
-            //{
-            //    if(i > wrds[0].Length)
-            //    {
-            //        isError = true;
-            //        break;
-            //    }
-            //    if (userInputTextBox.Text[i] != wrds[0][i])
-            //    {
-
-            //        isError = true;
-            //        break;
-            //    }
-            //}
-            //if (isError)
-            //{
-            //    if(wordLen >= wrds[0].Length)
-            //        wordLen = wrds[0].Length-1;
-            //    if (wordLen >= userInputTextBox.Text.Length && userInputTextBox.Text.Last() != wrds[0][wordLen])
-            //        errors++;
-            //    statusLabel.Text = "Status: ERROR";
-            //    statusLabel.BackColor = Color.Red;
-            //}
-            //else
-            //{
-            //    statusLabel.Text = "Status: OK";
-            //    statusLabel.BackColor = Color.Lime;
-            //}
-            //wordLen++;
 
         }
 
@@ -180,12 +130,13 @@ namespace Type_Racer
 
         private void statsCouter_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            for(int i =0; i < 10000; i++)
+            for(int i =0; timer.IsRunning ; i++)
             {
                 if (statsCouter.CancellationPending)
                     break;
 
-                statsCouter.ReportProgress(i%2);
+                statsCouter.ReportProgress(i);
+                Thread.Sleep(100);
             }
             return;
         }
@@ -193,16 +144,9 @@ namespace Type_Racer
         private void statsCouter_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             errorsLabel.Text = $"Mistakes: {errors}";
-            CompletedWordsLabel.Text = $"Completed words: ";
-            timeLabel.Text = $"Time: {double.Round((double)timer.ElapsedMilliseconds / 1000, 3)} s";
+            CompletedWordsLabel.Text = $"Completed words: {words}";
+            timeLabel.Text = $"Time: {double.Round((double)timer.ElapsedMilliseconds / 1000, 1)} s";
         }
 
-        private void statsCouter_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
-        {
-            if(timer.IsRunning)
-            {
-                statsCouter.RunWorkerAsync();
-            }
-        }
     }
 }
