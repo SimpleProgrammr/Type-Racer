@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Data;
+﻿using System.Data;
 
 namespace Type_Racer
 {
@@ -20,6 +19,11 @@ namespace Type_Racer
 
         private void RaceWindow_Load(object sender, EventArgs e)
         {
+            clicks = 0;
+            words = 0;
+            errors = 0;
+            wordsDisplayed = 5;
+            wordLen = 0;
             NewWords();
             stateLabel.Text = "0/" + MainWindow.wordsNum + " 0%";
             userInputTextBox.Focus();
@@ -132,7 +136,7 @@ namespace Type_Racer
 
         private void statsCouter_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            for(int i =0; timer.IsRunning ; i++)
+            for (int i = 0; timer.IsRunning; i++)
             {
                 if (statsCouter.CancellationPending)
                     break;
@@ -148,8 +152,8 @@ namespace Type_Racer
             errorsLabel.Text = $"Mistakes: {errors}";
             CompletedWordsLabel.Text = $"Completed words: {words}";
             timeLabel.Text = $"Time: {double.Round((double)timer.ElapsedMilliseconds / 1000, 1)} s";
-            stateProgressBar.Value = (int)((words / MainWindow.wordsNum)*100);
-            stateLabel.Text = $"{words}/{MainWindow.wordsNum} {Math.Round((words / MainWindow.wordsNum) * 100,0)}%";
+            stateProgressBar.Value = (int)((words / MainWindow.wordsNum) * 100);
+            stateLabel.Text = $"{words}/{MainWindow.wordsNum} {Math.Round((words / MainWindow.wordsNum) * 100, 0)}%";
         }
 
     }
