@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Data;
+﻿using System.Data;
 
 namespace Type_Racer
 {
@@ -153,8 +152,8 @@ namespace Type_Racer
             errorsLabel.Text = $"Mistakes: {errors}";
             CompletedWordsLabel.Text = $"Completed words: {words}";
             timeLabel.Text = $"Time: {double.Round((double)timer.ElapsedMilliseconds / 1000, 1)} s";
-            stateProgressBar.Value = (int)((words / MainWindow.wordsNum)*100);
-            stateLabel.Text = $"{words}/{MainWindow.wordsNum} {Math.Round((words / MainWindow.wordsNum) * 100,0)}%";
+            stateProgressBar.Value = (int)((words / MainWindow.wordsNum) * 100);
+            stateLabel.Text = $"{words}/{MainWindow.wordsNum} {Math.Round((words / MainWindow.wordsNum) * 100, 0)}%";
         }
 
     }
