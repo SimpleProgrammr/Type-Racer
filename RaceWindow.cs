@@ -19,8 +19,8 @@ namespace Type_Racer
 
         private void RaceWindow_Load(object sender, EventArgs e)
         {
-            clicks = 0;
-            words = 0;
+            clicks = 0; 
+            words = 0; 
             errors = 0;
             wordsDisplayed = 5;
             wordLen = 0;

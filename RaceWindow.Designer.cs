@@ -51,6 +51,7 @@
             userInputTextBox.Name = "userInputTextBox";
             userInputTextBox.Size = new Size(595, 31);
             userInputTextBox.TabIndex = 0;
+            userInputTextBox.TextAlign = HorizontalAlignment.Center;
             userInputTextBox.TextChanged += UserInput_TextChanged;
             userInputTextBox.KeyDown += userInputTextBox_KeyDown;
             // 
